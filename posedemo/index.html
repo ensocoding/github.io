@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html lang="en">
+
+<head>
+    <title>Pose Demo IBM CD</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="3600">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Prueba de concepto">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="#242424">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/navbar.js"></script>
+
+    <!-- Tensorflow JS -- >
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="@tensorflow/tfjs.js"></script>
+    <script src="@tensorflow/tfjs-core.js"></script>
+    <script src="@tensorflow/tfjs-converter.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+    -->
+    <script src="@tensorflow/tf.min.js"></script>
+    <script src="@tensorflow-models/posenet.js"></script>
+
+</head>
+
+<body onload="modelOneExtractPostures()">
+
+    <header class="card-header w-100">
+        <h5 class="d-flex justify-content-between align-items-center p-1 m-0">
+            <img src="favicon.png" height="30px">
+            <span>Pose Demo on IBM Cloud</span>
+            <a href="#" class="text-decoration-none text-black-50" onclick="NAVBAR.toggle('navbar')"><i class="fa fa-navicon"></i></a>
+        </h5>
+    </header>
+
+    <!-- Navbar -->
+    <div class="vw-100 m-0 p-0 row position-fixed" style="opacity: 1.0; z-index: 3;">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+            <div class="bg-dark">
+                <div id="navbar" class="navbar collapse">
+                    <div class="d-flex flex-column w-100">
+
+                        <a class="text-white text-decoration-none w-100" onclick="NAVBAR.toggle('navbar')" href="res/descrip.html">
+                            <i class="fa fa-info-circle"></i> &nbsp;Proof of Concept Overview</a>
+
+                        <a class="text-white text-decoration-none w-100" onclick="NAVBAR.toggle('navbar')" href="res/code.txt" target="_blank">
+                            <i class="fa fa-code"></i> &nbsp;View the Code</a>
+
+                        <a class="text-white text-decoration-none w-100" onclick="NAVBAR.toggle('navbar')" href="#about">
+                            <i class="fa fa-coffee"></i> &nbsp;About</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="#top"></a>
+
+    <!--Contents -->
+    <section>
+        <div class="m-0 p-0 bg-white">
+            <div class="row m-0 p-1">
+                <div class="col-lg-6 panel-1">
+                    <!-- columna 1 -->
+                    <div id="image-panel">
+                        <img id='image' src="images/01.jpg" width="513px" height="513px">
+                        <canvas id='image-canvas' width="513px" height="513px"></canvas>
+                    </div>
+                    <div id='control-panel'>
+                        <div id='controls'>
+                            &nbsp;Opacity:
+                            <select class="btn btn-dark" id='opacity-selector'>
+                            </select> &nbsp;Score:
+                            <select class="btn btn-dark" id='score-selector'>
+                            </select> &nbsp;Confidence:
+                            <select class="btn btn-dark" id='confidence-selector'>
+                            </select>
+                        </div>
+                        <!-- div id='fileloader'>
+                            Imagen:<input class="btn-light" type='file' size='70' multiple='false' 
+                            onchange="changeFileImage(this)">
+                        </div -->
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    <select class="btn btn-dark" id='image-selector'>
+                        <option value="images/01.jpg">Image 01.jpg</option>
+                        <option value="images/02.jpg">Image 02.jpg</option>
+                        <option value="images/02b.jpg">Image 02b.jpg</option>
+                        <option value="images/02c.jpg">Image 02c.jpg</option>
+                        <option value="images/03.jpg">Image 03.jpg</option>
+                        <option value="images/04.jpg">Image 04.jpg</option>
+                        <option value="images/04b.jpg">Image 04b.jpg</option>
+                        <option value="images/05.jpg">Image 05.jpg</option>
+                        <option value="images/06.jpg">Image 06.jpg</option>
+                        <option value="images/07.jpg">Image 07.jpg</option>
+                        <option value="images/07b.jpg">Image 07b.jpg</option>
+                        <option value="images/08.jpg">Image 08.jpg</option>
+                        <option value="images/08b.jpg">Image 08b.jpg</option>
+                        <option value="images/09.jpg">Image 09.jpg</option>
+                        <option value="images/09b.png">Image 09b.png</option>
+                        <option value="images/09c.png">Image 09c.png</option>
+                        <option value="images/10.jpg">Image 10.jpg</option>
+                        <option value="images/10b.png">Image 10b.png</option>
+                        <option value="images/11.jpg">Image 11.jpg</option>
+                        <option value="images/12.jpg">Image 12.jpg</option>
+                        <option value="images/12b.jpg">Image 12b.jpg</option>
+                        <option value="images/13.jpg">Image 13.jpg</option>
+                        <option value="images/14.jpg">Image 14.jpg</option>
+                        <option value="images/15.jpg">Image 15.jpg</option>
+                        <option value="images/16.jpg">Image 16.jpg</option>
+                        <option value="images/16b.jpg">Image 16b.jpg</option>
+                        <option value="images/D1.png">Synthetic Poses D1.png</option>
+                    </select>
+                    <a class="btn btn-dark" href="#" onclick="reloadImage()"><i class="fa fa-refresh"></i></a>
+                    <div id='pose-message'>Mensajes de avance ...</div>
+                    <br>
+
+                    <!-- columna 2 -->
+                    <input class="btn btn-dark" type="button" value=" Poses " id='poses-button'>
+                    <input class="btn btn-dark" type="button" value=" Datos " id='datos-button'>
+                    <div id='pose-list' style="display: block;"></div>
+                    <div id='pose-data' style="display: none;"></div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <a name="about"></a>
+
+    <footer class="card-footer w-100">
+        <div class="d-flex justify-content-between align-items-center">
+            <img src="res/img/enso_logo.png " height="36px">
+            <a class="text-black-50 text-decoration-none" href="#top"><i class="fa fa-chevron-up"></i></a>
+        </div>
+        <div class="pl-1">
+            <small>(C) 2021 EnsoCoding - <a href="mailto:diego.perez.oym@gmail.com">diego.perez.oym@gmail.com</a></small>
+        </div>
+        <div class="pl-1">
+            <small>Powered by: &nbsp; Google Tensorflow - PoseNet 2.0 - DAZ 3D Studio - GIT - IBM Cloud CD Pipeline</small>
+        </div>
+        <br>
+        <br>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

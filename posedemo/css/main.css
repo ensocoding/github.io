@@ -1,0 +1,140 @@
+/**
+ *  main.css 
+ *  POSENET DEMO
+ *  library to extract poses from images and draw all the skeletons in scaled dimensions
+ */
+
+section {
+    display: flex;
+    font-size: 12px;
+    font-family: Verdana, sans-serif;
+    font-weight: normal;
+}
+
+table,
+td,
+tr {
+    border: 1px solid black;
+    border-spacing: 0;
+}
+
+.pose-div {
+    width: 515px;
+    height: 246px;
+    margin: 4px;
+    margin-left: 0px;
+    padding: 1px;
+    background: #202020;
+    color: white;
+    font-size: 16px;
+    font-family: Verdana, sans-serif;
+    font-weight: normal;
+}
+
+.pose-canvas {
+    width: 240px;
+    background: black;
+    margin: 2px;
+    display: block;
+}
+
+.pose-label {
+    color: darkgray;
+    width: 240px;
+    /* background: red; */
+    margin: 2px;
+    font-size: 16px;
+    font-family: Verdana, sans-serif;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.pose-separator {
+    border-color: darkgray;
+}
+
+.pose-class {
+    width: 100%;
+    margin: 0px auto;
+    padding: 2px;
+    font-size: 12px;
+    font-family: Verdana, sans-serif;
+    font-weight: normal;
+    display: flex;
+    flex-direction: row;
+}
+
+.pose-class-name {
+    color: #fafafa;
+    font-size: 11px;
+    width: 90px;
+}
+
+.pose-class-predic {
+    width: 50px;
+    color: #ffe040;
+}
+
+.pose-class-bar {
+    width: 100px;
+    background: red;
+}
+
+.pose-data-tb {
+    border-spacing: 0;
+    font-size: 12px;
+    font-family: "Courier";
+    text-align: left;
+    background: #202020;
+    color: lightgreen;
+}
+
+.pose-data-tb-header {
+    border-spacing: 0;
+    color: white;
+}
+
+.pose-data-title {
+    color: navy;
+}
+
+.panel-1 {
+    height: 600px;
+}
+
+#image {
+    margin-top: 0px;
+    margin-left: 0px;
+    position: absolute;
+    z-index: 1;
+    opacity: 1.0;
+}
+
+#image-canvas {
+    margin-top: 0px;
+    margin-left: 0px;
+    position: absolute;
+    z-index: 2;
+}
+
+#image-selector {
+    color: white;
+}
+
+#control-panel {
+    margin-top: 520px;
+    position: absolute;
+    display: block;
+    width: 515px;
+}
+
+#fileloader {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+#pose-message {
+    display: block;
+    font-weight: bold;
+    color: red;
+}

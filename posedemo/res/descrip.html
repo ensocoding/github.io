@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html lang="en">
+
+<head>
+    <title>Pose Demo</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="3600">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Prueba de concepto">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="#242424">
+    <link rel="icon" href="../favicon.png" type="image/x-icon">
+
+    <!-- LOCAL -->
+    <link rel="stylesheet" href="../css/fonts-local.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/navbar.js"></script>
+
+</head>
+
+<body>
+
+    <header class="card-header">
+        <h5 class="d-flex justify-content-between align-items-center p-1 m-0">
+            <img src="../favicon.png" height="30px">
+            <span>PoC Overview</span>
+            <a href="../index.html" class="text-decoration-none text-black-50"><i class="fa fa-home"></i></a>
+        </h5>
+    </header>
+    <a name="#top"></a>
+
+    <!--Contents -->
+    <section>
+        <div class="m-0 p-0 bg-white">
+            <div class="row m-0 p-0">
+                <div class="col-md-10 p-10">
+                    <!-- columna 1 -->
+                    <br>
+                    <h4>Reading the body language of the postures extracted from an image</h4>
+                    <br>
+
+                    <h5>Objetive</h5>
+
+                    This is a proof of concept about how to use AI for reading the body language from postures. It is intended to be applied in the field of security and video survillance. Having a body language detection tool can help in the operation of a security monitoring
+                    center. It can detect highly risky situacions with severe consecuences in the security of people and goods. Such situations may not be easily detected just by human operators without a strong expertise in the field. So, this kind of
+                    tools can assist the operators on what camera have to put their attention to, at any time.
+                    <br>
+                    <br>
+
+
+                    <h5>Description</h5>
+
+                    In concrete, it is a JS library that extracts human postures from an image and scores them into 7 classes according to some body language signals and mental states (open, close, dominant, aggresive, fearful, etc.). There are 2 models involved and some
+                    extra code to connect both models, as well as normalizing and scaling the data, but also to render the skeletons in scaled dimensions and the presentation of the results in bar charts.
+                    <br>
+                    <br>
+                    <img src="img/screen.png" height="400px" class="m-lg-4">
+                    <br>
+                    <br>* <b>Model One</b> is the PoseNet Tensorflow model, which is used to extract 17 joints from each pose.
+                    <br>* <b>Model Two</b> is a pre-trained Keras Softmax custom classifier, which scores the data from the 17 joints and classifies them among the 7 classes of the emotional state revealed by the posture.
+                    <br>
+                    <br>The dataset used is just made with 184 images of people obtained from the internet.
+                    <br>The input image files used here are taken from the PoseNet model demo, and 1 synthetic image was generated with DAZ 3D Studio.
+                    <br>
+                    <br>
+                    <br>
+
+                    <h5>Installation</h5>
+
+                    This is a simple web proyect. Just clone this repo and upload it into a web server, either a localhost or a hosting one.
+                    <br>
+                    <code>
+                        $ git clone <a href="https://github.com/ensocoding/pose-demo">https://github.com/ensocoding/pose-demo</a>
+                    </code>
+                    <br>
+                    <br> The tensor flow libraries, as well as the PoseNet model and the custom-made classifier, are all included here, because better peformance is achived this way. It also avoid installation issues. Just download and run it. This demo
+                    can even run if the local web server is not connected to the internet.
+                    <br>
+                    <br>
+
+                    <h5>Disclaimer</h5>
+
+                    This software is not intented to run in a live production environment. It's just a demo to conceptually show how to implement a basic system that be capable to read an image and return the body language classification for each posture, as a result. The
+                    classifier has been trained with a limited dataset, so there is plenty of room for improvements in terms of accuracy, performance, system design and features.
+                    <br>
+                    <br>
+
+                    <h5>Acknowledgements</h5>
+
+                    PoseNet is a Tensorflow js library from Google Inc. LLC.
+                    <br>Keras is a Tensorflow library from Google Inc. LLC.
+                    <br>The synthetic image was generated with the DAZ 3D Studio software.
+                    <br>
+                    <br>
+                    <h5>Licence</h5>
+
+                    GNU General Public License v2.0
+                    <br>
+                    <br>
+                    <br>
+
+                </div>
+                <div class="col-md-2 p-1">
+                    <!-- columna 2 -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
