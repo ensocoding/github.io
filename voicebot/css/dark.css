@@ -1,0 +1,92 @@
+/**
+ *   VICKY 1.0 
+ *   The voice-chatbot trial  
+ *   
+ *   DARK MODE THEME
+ *   
+ *   @author (c) EnsoCoding 2020
+ */
+
+html,
+body {
+    background-color: #000000;
+    color: white;
+    font-size: 16px;
+}
+
+#back-avatar {
+    background-color: #242424;
+}
+
+#outoffice-div {
+    background-color: #242424;
+}
+
+#avatar-canvas-div {
+    width: 100%;
+    text-align: center;
+}
+
+#avatar-canvas {
+    display: inline;
+}
+
+#response {
+    background-color: black;
+}
+
+a {
+    color: blue;
+}
+
+.cardcolor {
+    background-color: black;
+}
+
+.action-color {
+    color: red;
+}
+
+#acciones {
+    background-color: #242424;
+}
+
+.facecolor {
+    background-color: #242424;
+    border: none;
+    border-top: 1px solid darkkgray;
+    border-bottom: 1px solid darkkgray;
+    border-right: 5px solid gray;
+}
+
+.topbar-buttons-color {
+    color: lightgray !important;
+}
+
+.chat-text {
+    color: black;
+}
+
+.footer-text {
+    color: gray;
+}
+
+.option-box {
+    display: inline;
+    border: 1px solid gray;
+    background-color: maroon;
+    border-radius: 8px;
+    /* height: 30px; */
+    margin: 4px 4px 4px;
+    padding: 4px 8px;
+    font-size: 14px;
+    color: white;
+}
+
+.option-text {
+    color: white;
+}
+
+.user-text {
+    color: navy;
+}

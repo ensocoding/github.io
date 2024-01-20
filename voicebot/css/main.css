@@ -1,0 +1,200 @@
+/**
+ *   VICKY 1.0 
+ *   The voice-chatbot trial  
+ *   
+ *   MAIN  STYLES
+ *   
+ *   @author (c) EnsoCoding 2020
+ */
+
+
+/**
+Styles By IDs in order of index page usage 
+*/
+
+#div-1-cols12 {
+    padding-top: 0px;
+    border-bottom: none;
+    max-width: 360px;
+    width: 100%;
+    margin: 0px auto;
+    align-content: center;
+}
+
+#div-2-card-1 {
+    background-color: transparent;
+    padding-bottom: 10px;
+    padding-top: 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+#chatear {
+    display: block;
+    height: 55px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    opacity: 1.0;
+    z-index: 3;
+    align-content: center;
+}
+
+#topbar-buttons-container {
+    display: block;
+    padding: 10px 10px 0px 5px;
+    width: 350px;
+    height: 55px;
+    margin-left: 20px;
+}
+
+#topbar-button-1 {
+    display: inline;
+    margin: 0px auto;
+    padding: 10px 22px 0px 0px;
+    /*   width: 260px; */
+}
+
+#video-hidding-button {
+    display: inline;
+    margin: 0px auto;
+    padding: 10px 10px 2px 2px;
+}
+
+#topbar-volume-button {
+    display: inline;
+    margin: 0px auto;
+    padding: 0px 0px 0px;
+}
+
+#online-video-div {
+    margin: 0px auto;
+    padding: 0px 0px 0px 0px;
+    margin-top: 45px;
+}
+
+#online-title {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Sans-serif, Arial;
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 25px
+}
+
+#outoffice-div {
+    /* igual a online-div*/
+    height: 230px;
+    margin: 0px auto;
+    padding: 5px 25px 5px;
+    align-content: center;
+    font-size: 12px;
+    align-content: center;
+}
+
+#online-div {
+    /* igual a outoffice-div*/
+    height: 230px;
+    background-color: transparent;
+    align-content: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 0px auto;
+    align-content: center;
+}
+
+#back-avatar {
+    height: 220px;
+}
+
+#avatar-video-div {
+    background-repeat: no-repeat;
+}
+
+#avatar-video {
+    background: transparent;
+    max-height: 220px;
+}
+
+#avatar-canvas {
+    background: transparent;
+    max-height: 220px;
+}
+
+#llamar {
+    width: 340px;
+    height: 281px;
+    margin-left: 22px;
+    margin-right: 20px;
+    margin-top: 0px;
+}
+
+#acciones {
+    padding: 0px 24px;
+    /* background-color: transparent; */
+    width: 360px
+}
+
+#response-history {
+    font-style: bold;
+    text-align: left;
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+#watson-preview-div {
+    margin: 0px auto;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    padding: 0px 0px 0px 0px;
+    border-width: 0px;
+    border-color: transparent;
+    vertical-align: bottom;
+}
+
+#footer {
+    height: 50px;
+    padding-left: 30px;
+    margin: 0px auto;
+    margin-top: 20px;
+    width: 100%;
+    background-color: transparent;
+    display: block;
+    align-content: center;
+}
+
+
+/* 
+Styles By Class, just some few cases
+*/
+
+.footer-text {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    font-size: 12px;
+}
+
+.help-text {
+    color: gray;
+}
+
+
+/* 
+clearfix workarround if video render jumps outside boundaries 
+not used yet - just in case 
+*/
+
+.clearfix {
+    overflow: auto;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html lang="es">
+
+<head>
+    <title>Vicky 1.0 - The Voicebot Trial v2</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="expires" content="3600">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Prueba de avatar 3D con speech2text">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="#242424">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+
+    <!-- referenciados a LOCAL -- >
+    <link rel="stylesheet" href="./fonts/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./css/materialize.css">
+    <script defer src="./js/jquery.min.js"></script>
+    <script defer src="./js/materialize.min.js"></script>
+    <script defer src="https://code.responsivevoice.org/responsivevoice.js?key=oZMemG4m"></script>
+
+    < !-- referenciados a REMOTE -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    <script defer src="https://code.responsivevoice.org/responsivevoice.js?key=oZMemG4m"></script>
+    <!-- responsive key from botlibre (but i have my own key now)
+    script defer src='https://code.responsivevoice.org/responsivevoice.js?key=eTTbdFpx'></script 
+    -->
+    <!-- preservados no utilizados por ahora --
+	<script defer src="https://www.botlibre.com/scripts/sdk.js" id="botlibre-sdk"></script>
+	-->
+    <!-- locales: SDK está modificado para atrapar errores desde vicky -->
+    <script defer src="./js/sdk.js" id="botlibre-sdk"></script>
+    <!-- propios de Vicky -->
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/light.css" id="css-theme">
+    <script defer src="./js/vicky.js?v=20201111"></script>
+
+</head>
+
+<body>
+    <div id="video-div"></div>
+    <!-- col s12-->
+    <div id='div-1-cols12' class="col s12">
+        <!-- TOPBAR-->
+        <div id='chatear' class="facecolor">
+            <div id='topbar-buttons-container' class="red-text">
+                <div id='topbar-button-1'>
+                    <a class='topbar-buttons-color' href="#" onclick="toggleChattingRooms()">
+                        <i class="material-icons">chat</i>&nbsp;&nbsp;
+                        <span id='chatear-label'>Chatear en Watson</span></a>
+                </div>
+                <div id="video-hidding-button">
+                    <a class='topbar-buttons-color' href="#" onclick="toggleVideoHidding()">
+                        <i class="material-icons">question_answer</i>&nbsp;Chat</a>
+                </div>
+                <div id='topbar-volume-button' class='topbar-buttons-color'>
+                    <i id="volume-button" class="material-icons" onclick="toggleVolume()">volume_up</i>
+                </div>
+            </div>
+        </div>
+        <!-- /topbar-->
+
+        <!-- card 1-->
+        <div id='div-2-card-1' class="card cardcolor">
+            <div style="height: 20px;"></div>
+            <img id='header-image' src="./img/avatar.png" 
+            style="display: block; position: relative; top: 60px; left: 270px; height:70px; opacity: 0.8; z-index: 5;">
+            <!-- online-video-div -->
+            <div id="online-video-div" style="display: block">
+
+                <!-- SPAN VIDEO HIDDING PANELS-->
+                <span id="video-hidding-panels" style="display: block;">
+
+                <div id='online-title'>Victoria Video Call</div>	 
+                <div id='outoffice-div' style="display: none"></div>
+
+                <!-- online-div -->
+                <div id='online-div' style='display: none'>
+                    <div id='bot-div'>
+                        <div class="row" id="back-avatar">
+                            <div id='avatar-video-div' preload="auto" class="avatarCenter">
+                                <video id='avatar-video' autoplay preload="true">
+                                    Video format not supported by your browser (try Chrome)
+                                </video>
+                            </div>
+                            <div id='avatar-canvas-div' class="avatarCenter">
+                                <canvas id='avatar-canvas'  class="avatarCenter">
+                                    Canvas not supported by your browser (try Chrome)
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>			
+                <!-- /online-div -->
+
+                <!-- llamar -->
+                <div id='llamar' style="display: block;">
+                    <!-- boton de llamar no se compacta -->
+                    <div style="display: flex; width: 320px; margin-top: 10px;" >
+                        <div style="width: 120px; padding: 0px 10px;">
+                            <a href="#" class="red-text" onclick="startTalking()">
+                            <i class="material-icons">call</i>&nbsp;&nbsp;Llamar</a>				
+                        </div>
+                        <!-- botones compactos auxiliares // se generan en vicky.JS -->
+                    </div>
+                    <!-- botones de llamar expandidos (quedan al mismo nivel del de llamada y se restauran desde vicky.JS) -->
+                    <div style="width: 100%; padding: 0px 10px;">
+                        &nbsp;
+                    </div>
+                    <div style="width: 100%; padding: 0px 10px;">
+                        <a href="#" class="red-text" onclick="setInput('version')">
+                            <i class="material-icons">info_outline</i>&nbsp;&nbsp;
+                            <span style="font-size: 12px">VER&nbsp;&nbsp;</span>: Acerca de Victoria</a>
+                    </div>
+                    <div style="width: 100%; padding: 0px 10px;">
+                        <a href="#" class="red-text" onclick="setInput('vicky')">
+                            <i class="material-icons">face</i>&nbsp;&nbsp;
+                            <span style="font-size: 12px">HEY&nbsp;&nbsp;</span>: Confirmar presencia</a>
+                    </div>
+                    <div style="width: 100%; padding: 0px 10px;">
+                        <a href="#" class="red-text" onclick="setInput('ayuda')">
+                            <i class="material-icons">help</i>&nbsp;&nbsp;
+                            <span style="font-size: 12px">HELP&nbsp;&nbsp;</span>: Menú de Opciones en Watson</a>
+                    </div>
+                    <div style="width: 100%; padding: 0px 10px;">
+                        <a href="#" class="blue-text" onclick="rotateGPT()">
+                            <i class="material-icons">face</i>&nbsp;&nbsp;
+                            <span style="font-size: 12px">GTP&nbsp;&nbsp;</span>: Modo Asistente Chat GPT (on|off)</a>
+                    </div>
+                    <div style="width: 100%; padding: 0px 10px;">
+                        <a href="#" class="help-text" onclick="rotateAvatarLocation(null)">
+                            <i class="material-icons">location_on</i>&nbsp;&nbsp;
+                            <span style="font-size: 12px">TRABAJO&nbsp;</span>: Cambiar ubicación</a>
+                    </div>
+                    <div style="width: 100%; padding: 0px 10px;">
+                        <a href="#" class="help-text" onclick="rotateTheme(null)">
+                            <i class="material-icons">brightness_high</i>&nbsp;&nbsp;
+                            <span style="font-size: 12px">LG&nbsp;&nbsp;</span>: Modo oscuro DK | Claro LG</a>
+                    </div>
+                    <div style="width: 100%; padding: 0px 10px;">
+                        <a href="#" class="help-text" onclick="rotateLanguage()">
+                            <i class="material-icons">language</i>&nbsp;&nbsp;
+                            <span style="font-size: 12px">ES&nbsp;&nbsp;</span>: Cambiar idioma (ES, IT, EN, SP)</a>
+                    </div>
+                    <div style="width: 100%; padding: 0px 10px;" class="help-text">
+                        <i class="material-icons">mic</i>&nbsp;&nbsp;
+                        <span style="font-size: 12px">MIC&nbsp;|&nbsp;LOOP</span>: Tocar para Hablar | En Bucle.
+                    </div>
+
+                </div>
+                <!-- /llamar -->
+
+                </span>
+                <!-- /span video hidding panels-->
+
+                <!-- ACCIONES: userinput / speech mic / text / tools / settings -->
+                <div id="acciones" class="card-action" style="display: block;">
+                    <div style="display: block">
+                        <img src="./img/userpe.png" height="35px" style="margin: 0px 0px; padding: 0px 0px 0px; margin-top: 5px;">
+                        <input id='chat' type='text' placeholder='Escribe "hola" aquí, o habla tocando el mic.' style="height: 20px; margin-bottom: 5px;" />
+                    </div>
+                    <!-- div style="display: inline; width: 40%; font-size: 12px; pading: 0px 0px 0px 0px;" -->
+                    <div style="display: inline; font-size: 12px;">
+                        <a href="#" class="red-text" onclick="rotateAvatarLocation(null)">
+                            <span id='avatar-location' style="width: 160px; padding: 0px 10px; margin-right: 0px;">TRABAJO</span>
+                        </a>
+                    </div>
+                    <div style="display: inline; font-size: 12px;">
+                        <a href="#" class="red-text" onclick="rotateTheme(null)">
+                            <i id='screen-theme' class="material-icons">brightness_high</i>
+                            <span id='screen-mode' style="margin-right: 0px;">LG</span>
+                        </a>
+                    </div>
+                    <div style="display: inline; font-size: 12px; margin-right: 0px;">
+                        <a href="#" class="red-text" onclick="rotateLanguage()">
+                            <i class="material-icons">language</i>
+                            <span id='language' style="margin-right: -10px;">ES</span>
+                        </a>
+                    </div>
+                    <div style="display: inline; font-size: 12px;">
+                        <a href="#" class="red-text" style="margin-right: 0px;"><i class="material-icons" id="rec" >mic_none</i></a>
+                        <a href="#" id="mic-label" class="red-text" style="margin-right: 0px;" onclick="startLoopRecognition()">
+                            <span style="margin-right: 0px;">MIC</span></a>
+                    </div>
+                </div>
+                <!-- /acciones-->
+            </div>
+            <!-- /online-video-div -->
+        </div>
+        <!-- /card 1-->
+        
+
+        <!-- HISTORY chat oall -->
+        <div id='online-call-div' class="cardcolor">
+            <ul style="margin: 0px 0px 0px 0px; padding: 0px 0px 0px">
+                <div id="response-history" class="chat-text"></div>
+            </ul>
+        </div>
+        <!-- /history -->
+
+    </div>
+    <!-- /col s12 -->
+
+    <!-- IFRAME chat watson -->
+    <iframe id="watson-preview-div" scrolling="no" width="360px" height="700px" style="display: none" src="https://web-chat.global.assistant.watson.cloud.ibm.com/preview.html?region=us-south&integrationID=87aeaa50-cde9-4a52-830d-a57afe0e99d1&serviceInstanceID=58b2c424-cce2-40a9-a69d-6abaeeb0c746">
+	</iframe>
+    <!-- /iframe -->
+
+    <!-- FOOTER -->
+    <div id='footer' class="col s12">
+        <div class='footer-text'>
+            (c) Enso Coding Victoria v2.0 r.10-2023 | Voicebot trial<br> Powered by: IBM Watson | botlibre.com | OpenAI Chat GTP 3.5 API
+        </div>
+    </div>
+    <!-- /footer -->
+
+</body>
+
+</html>
