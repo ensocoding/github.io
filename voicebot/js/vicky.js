@@ -92,7 +92,7 @@ var sdk;
 /**
  * Chat GTP cofig
  */
-var apikeygpt = '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';
+var apikeygpt = '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';
 var baseUrl_gpt = "https://api.openai.com";
 var resource_gpt = "/v1/chat/completions";
 var lang_gpt_prompt = "In spanish.";
