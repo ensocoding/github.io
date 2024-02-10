@@ -90,12 +90,22 @@ var web;
 var sdk;
 
 /**
- * Chat GTP cofig
+ * Chat GPT cofig
  */
-var apikeygpt = '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';
+var apikeygpt = '';
+//var apikeygpt = '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';
 var baseUrl_gpt = "https://api.openai.com";
 var resource_gpt = "/v1/chat/completions";
 var lang_gpt_prompt = "In spanish.";
+var gpt_org = "org-G9oQFgbpUJ6YuQYPVk4IW7fF";
+
+// Open AI model version's availability 
+//var gpt_model = "gpt-3.5-turbo";
+var gpt_model = "gpt-3.5-turbo-instruct";
+//var gpt_model = "gpt-3.5-turbo-0125";
+//var gpt_model = "gpt-3.5-turbo-16k-0613";
+//var gpt_model = "gpt-3.5-turbo-0613"
+//var gpt_model = "gpt-3.5-turbo-1106"
 
 /**
  * variables de session Watson que deben persistir entre requests
@@ -687,11 +697,11 @@ function rotateGPT() {
     }
     if(chatgpt_on) { 
         chatgpt_on = false; 
-        addHistory('MODO CHAT-GTP OFF');
+        addHistory('MODO CHAT-GPT OFF');
         web.addMessage('Modo chat gpt desactivado', "crying", "kiss", "");
     } else {
         chatgpt_on = true;
-        addHistory('MODO CHAT-GTP ON');
+        addHistory('MODO CHAT-GPT ON');
         web.addMessage('Modo chat gpt activado', "happy", "smile", "");
     }
     processMessages();
@@ -1218,7 +1228,7 @@ function sendGPT(userinput) {
     // GPT request payload (data to be send):
     var data = JSON.stringify(
         {
-            "model": "gpt-3.5-turbo",
+            "model": gpt_model,
             "messages": [{"role": "user", "content": lang_gpt_prompt + " " + userinput + ". Responder en menos de 100 palabras."}],
             "temperature": 0.7
         }
@@ -1236,7 +1246,8 @@ function sendGPT(userinput) {
         dataType: "json",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + apikeygpt           
+            "OpenAI-Organization": gpt_org,        
+            "Authorization": "Bearer " + apikeygpt  
         },
         data: data,
         success: function(data) {
