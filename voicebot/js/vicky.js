@@ -93,7 +93,6 @@ var sdk;
  * Chat GPT cofig
  */
 var apikeygpt = '';
-//var apikeygpt = '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';
 var baseUrl_gpt = "https://api.openai.com";
 var resource_gpt = "/v1/chat/completions";
 var lang_gpt_prompt = "In spanish.";
