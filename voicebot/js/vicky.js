@@ -73,8 +73,13 @@ var asistId = "b7cde16e-d722-4528-8829-f6d4603de5d6";
 // stateless route
 // var postRouteSLess = "/v2/assistants/" + asistId + "/message?version=2020-04-01"
 // WATSON PREVIEW API END POINT 
-var baseUrl = "https://assistant-chat-us-south.watsonplatform.net";
-var postRouteSLess = "/public/message/87aeaa50-cde9-4a52-830d-a57afe0e99d1?version=2020-09-24"
+// error CORS
+// var baseUrl = "https://assistant-chat-us-south.watsonplatform.net";
+// var postRouteSLess = "/public/message/87aeaa50-cde9-4a52-830d-a57afe0e99d1?version=2020-09-24"
+
+var baseUrl = "https://integrations.us-south.assistant.watson.appdomain.cloud";
+var postRouteSLess = "/public/chat/87aeaa50-cde9-4a52-830d-a57afe0e99d1/message?version=2021-11-27";
+
 
 /**
  * Bot Libre Avatar configuration
@@ -92,7 +97,8 @@ var sdk;
 /**
  * Chat GPT cofig
  */
-var apikeygpt = '';
+//var apikeygpt = '';  // GIT repo must not have apikeys commited !!
+var apikeygpt = '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';
 var baseUrl_gpt = "https://api.openai.com";
 var resource_gpt = "/v1/chat/completions";
 var lang_gpt_prompt = "In spanish.";
@@ -1286,23 +1292,23 @@ function send() {
      * NOT OK: ignora el user input (siempre misma respuesta)
      * NOT OK: pierde contexto 
      */
-    var apiKey = "NNx5LAhOS7N3kMyX4DfVyZFfAwzOAFqyznqDW__It0YA";
+// var apiKey = "NNx5LAhOS7N3kMyX4DfVyZFfAwzOAFqyznqDW__It0YA";
     // base64('apikey:'+apiKey) = auth_basic (esto lo hace curl, no lo pude hacer en JS)
-    var authBasic = "YXBpa2V5Ok5OeDVMQWhPUzdOM2tNeVg0RGZWeVpGZkF3ek9BRnF5em5xRFdfX0l0MFlB";
-    var asistId = "b7cde16e-d722-4528-8829-f6d4603de5d6";
-    var baseUrl = "https://api.us-south.assistant.watson.cloud.ibm.com/instances/58b2c424-cce2-40a9-a69d-6abaeeb0c746";
+// var authBasic = "YXBpa2V5Ok5OeDVMQWhPUzdOM2tNeVg0RGZWeVpGZkF3ek9BRnF5em5xRFdfX0l0MFlB";
+// var asistId = "b7cde16e-d722-4528-8829-f6d4603de5d6";
+// var baseUrl = "https://api.us-south.assistant.watson.cloud.ibm.com/instances/58b2c424-cce2-40a9-a69d-6abaeeb0c746";
     // statefull route (must adquire a session_id first, NOT USED YET)
     //var postSession = "/v2/" + asistId + "/sessions"
     //var postRouteSFull = "/v2/" + asistId + "/sessions"
     // stateless route
-    var postRouteSLess = "/v2/assistants/" + asistId + "/message?version=2020-04-01"
+// var postRouteSLess = "/v2/assistants/" + asistId + "/message?version=2020-04-01"
 
     /* WATSON PREVIEW API END POINT 
      * localhost origin API URL
      * emulates to be the preview and its WORKING OK, context included
      */
-    var baseUrl = "https://assistant-chat-us-south.watsonplatform.net";
-    var postRouteSLess = "/public/message/87aeaa50-cde9-4a52-830d-a57afe0e99d1?version=2020-09-24"
+// var baseUrl = "https://assistant-chat-us-south.watsonplatform.net";
+// var postRouteSLess = "/public/message/87aeaa50-cde9-4a52-830d-a57afe0e99d1?version=2020-09-24"
      /* */
 
     // start reading user input
