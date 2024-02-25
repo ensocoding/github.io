@@ -98,7 +98,7 @@ var sdk;
  * Chat GPT cofig
  */
 //var apikeygpt = '';  // GIT repo must not have apikeys commited !!
-var apikeygpt = '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';
+var apikeygpt = '';
 var baseUrl_gpt = "https://api.openai.com";
 var resource_gpt = "/v1/chat/completions";
 var lang_gpt_prompt = "In spanish.";
