@@ -1,4 +1,5 @@
-# github.io
+# ![alt text](favicon.png) Enso Coding 
+
 
 ## Github pages testing apps
 
