@@ -52,7 +52,7 @@ var recognition;
 /**
  * Lang configurations
  */
-var lang_selected = "es"; // español default
+var lang_selected = "sp"; // español default
 var lang_native_option = 1 // native selected option (only apply for spanish lang) 
 var lang_native_voice = true; // default initAvatar config
 //  1 = responsive voice native option
